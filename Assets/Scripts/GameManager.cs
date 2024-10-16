@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+  [SerializeField]
   public static float hp;
+  [SerializeField]
   public static float life;
+  [SerializeField]
   public static float cash;
 
+  [SerializeField]
   public static float currentLevel;
+  [SerializeField]
   public static float currentWave;
 
   public static bool isAlive;
