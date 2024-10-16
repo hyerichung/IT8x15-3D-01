@@ -13,6 +13,9 @@ public class Movement3D : MonoBehaviour
   private float gravity = -9.81f;
 
   private Vector3 moveDirection;
+
+  [SerializeField]
+  private Transform cameraTransform; // camera transform component;
   private CharacterController characterController;
 
   void Awake()
@@ -33,7 +36,11 @@ public class Movement3D : MonoBehaviour
 
   public void MoveTo(Vector3 direction)
   {
-    moveDirection = new Vector3(direction.x, moveDirection.y, direction.z);
+    // want to make character moving alongwith the camera angle z)
+    // moveDirection.y is gravity applied
+    Vector3 cameraDirection = cameraTransform.rotation * direction;
+    moveDirection = new Vector3(cameraDirection.x, moveDirection.y, moveDirection.z);
+
   }
 
   public void JumpTo()
