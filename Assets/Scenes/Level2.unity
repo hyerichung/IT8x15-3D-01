@@ -954,7 +954,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2144715422}
         m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
-        m_MethodName: LoadGameOverScene
+        m_MethodName: LoadGameResultScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1383,7 +1383,6 @@ GameObject:
   - component: {fileID: 1831744474}
   - component: {fileID: 1831744473}
   - component: {fileID: 1831744472}
-  - component: {fileID: 1831744471}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1391,19 +1390,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1831744471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831744470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de64d1dd8939240b9982f8298506aba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level_text: {fileID: 759158869}
 --- !u!114 &1831744472
 MonoBehaviour:
   m_ObjectHideFlags: 0
