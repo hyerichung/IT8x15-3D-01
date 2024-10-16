@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     if (!isAlive) return;
   }
 
-  public void GameOver()
+  public void GameResult()
   {
     isAlive = false;
   }

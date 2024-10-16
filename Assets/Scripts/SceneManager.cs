@@ -17,7 +17,7 @@ public class ScenesManager : MonoBehaviour
     Start,
     Level1,
     Level2,
-    GameOver,
+    GameResult,
   }
 
   public void LoadStartScene()
@@ -35,9 +35,9 @@ public class ScenesManager : MonoBehaviour
     SceneManager.LoadScene(Scene.Level2.ToString());
   }
 
-  public void LoadGameOverScene()
+  public void LoadGameResultScene()
   {
-    SceneManager.LoadScene(Scene.GameOver.ToString());
+    SceneManager.LoadScene(Scene.GameResult.ToString());
   }
 
 }
