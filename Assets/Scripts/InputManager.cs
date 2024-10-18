@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour
 {
@@ -10,12 +13,30 @@ public class InputManager : MonoBehaviour
   [SerializeField]
   private Camera mainCamera;
 
-  private Vector3 finalPosition;
+  private Vector3 finalInputPosition;
+
+  public event Action onClicked, OnExit;
+
+  private void Update()
+  {
+    if (Input.GetMouseButtonDown(0))
+    {
+      onClicked?.Invoke();
+    }
+
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      OnExit?.Invoke();
+    }
+  }
+
+  public bool IsMousePointerOverUI() => EventSystem.current.IsPointerOverGameObject();
 
   public Vector3 GetSelectedLayerPosition()
   {
     Vector3 mousePosition = Input.mousePosition;
 
+    // only objects located at a distance of nearClipPlane or more from the camera will be rendered
     mousePosition.z = mainCamera.nearClipPlane;
 
     Ray ray = mainCamera.ScreenPointToRay(mousePosition);
@@ -23,9 +44,9 @@ public class InputManager : MonoBehaviour
 
     if (Physics.Raycast(ray, out hit, 150, placementLayerMask))
     {
-      finalPosition = hit.point;
+      finalInputPosition = hit.point;
     }
 
-    return finalPosition;
+    return finalInputPosition;
   }
 }
