@@ -9,8 +9,7 @@ public class PlacementManager : MonoBehaviour
   private GameObject mouseIndicator; // current mouse position indicator
 
   [SerializeField]
-  private GameObject gridIndicator; // grid indicator based on current mouse indicator
-  private Renderer gridIndicatorPreview;
+  private PreviewManager preview;
 
   [SerializeField]
   private Grid grid; // cell
@@ -29,12 +28,14 @@ public class PlacementManager : MonoBehaviour
   // List of placed GameObject
   private List<GameObject> placedObjectList = new();
 
+  // last saved preview position, for checking if the gridPosition has been changed -> start from 0
+  private Vector3Int lastPreviewPosition = Vector3Int.zero;
+
   private void Start()
   {
     StopPlacement(); // reset placement before start
 
     placedObjectDatabase = new();
-    gridIndicatorPreview = gridIndicator.GetComponentInChildren<Renderer>();
   }
 
   private void Update()
@@ -44,12 +45,18 @@ public class PlacementManager : MonoBehaviour
     Vector3 mousePosition = inputManager.GetSelectedLayerPosition(); // get current mouse pointing position
     Vector3Int gridPosition = grid.WorldToCell(mousePosition); // convert world position to grid position 
 
+    // check last preview position and check if the grid position stem from the same mouse position
+    // if it's from same mouse position, no need to proceed further validity calculation
+    // if it's from different mouse position, calculate validity and update preview position
+    if (lastPreviewPosition == gridPosition) return;
+
     bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
 
-    gridIndicatorPreview.material.color = placementValidity ? Color.white : Color.red;
-
     mouseIndicator.transform.position = mousePosition;
-    gridIndicator.transform.position = grid.CellToWorld(gridPosition); // convert grid position to world position
+    // convert grid position to world position -> update preview position
+    preview.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
+    // save last preview position with grid position
+    lastPreviewPosition = gridPosition;
   }
 
   private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
@@ -71,7 +78,7 @@ public class PlacementManager : MonoBehaviour
     }
 
     gridPlane.SetActive(true);
-    gridIndicator.SetActive(true);
+    preview.StartShowingPreview(database.objectData[selectedObjectIndex].Prefab);
 
     inputManager.onClicked += PlaceObject;
     inputManager.OnExit += StopPlacement;
@@ -100,6 +107,9 @@ public class PlacementManager : MonoBehaviour
     // store newGameObject to placedObjectDatabase
     placedObjectDatabase.AddObject(gridPosition, database.objectData[selectedObjectIndex].Size, database.objectData[selectedObjectIndex].Id, placedObjectList.Count - 1);
 
+    // after object is placed, lastly update last preview position with gridPosition
+    lastPreviewPosition = gridPosition;
+
   }
 
   private void StopPlacement()
@@ -107,9 +117,11 @@ public class PlacementManager : MonoBehaviour
     selectedObjectIndex = -1;
 
     gridPlane.SetActive(false);
-    gridIndicator.SetActive(false);
+    preview.StopShowingPreview();
 
     inputManager.onClicked -= PlaceObject;
     inputManager.OnExit -= StopPlacement;
+
+    lastPreviewPosition = Vector3Int.zero;
   }
 }
