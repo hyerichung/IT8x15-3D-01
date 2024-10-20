@@ -13,15 +13,27 @@ MonoBehaviour:
   m_Name: ObjectDatabase
   m_EditorClassIdentifier: 
   objectData:
-  - <Title>k__BackingField: Bed
-    <Id>k__BackingField: 0
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 1a868be7b495440d68cf42ccc41d7356, type: 3}
-  - <Title>k__BackingField: Table
-    <Id>k__BackingField: 0
-    <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: a220e7ed16bd543b3be2a5d229bd332f, type: 3}
-  - <Title>k__BackingField: Rug
-    <Id>k__BackingField: 0
-    <Size>k__BackingField: {x: 2, y: 1}
-    <Prefab>k__BackingField: {fileID: 919132149155446097, guid: eb2e8a8557cf2464e88d8e94569a8ef2, type: 3}
+  - <Title>k__BackingField: blueTowerLevel1
+    <Id>k__BackingField: 1
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 100012, guid: ec2e28b7df4ef49eeac91376a9da7276, type: 3}
+  - <Title>k__BackingField: redTowerLevel1
+    <Id>k__BackingField: 2
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 100010, guid: 53a266247bfc2374d9598746bd2d5208, type: 3}
+  - <Title>k__BackingField: greenTowerLevel1
+    <Id>k__BackingField: 3
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 100004, guid: 6b70e8f94b0fa174d9930f6d76fc7724, type: 3}
+  - <Title>k__BackingField: blueTowerLevel2
+    <Id>k__BackingField: 4
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 100012, guid: 5e1cd6146658e4583a09affdff53d30f, type: 3}
+  - <Title>k__BackingField: redTowerLevel2
+    <Id>k__BackingField: 5
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 100016, guid: 2a31ff0da478eaf40beea558c3dc4c4b, type: 3}
+  - <Title>k__BackingField: greenTowerLevel2
+    <Id>k__BackingField: 6
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 100004, guid: e12c0f19ea644724f84bf0151f96adb9, type: 3}

@@ -44,8 +44,13 @@ public class InputManager : MonoBehaviour
 
     if (Physics.Raycast(ray, out hit, 150, placementLayerMask))
     {
+      GameObject clickedObject = hit.collider.gameObject;
+      // Debug.Log($"{clickedObject.name}, {clickedObject.gameObject}");
+
       finalInputPosition = hit.point;
     }
+
+    // Debug.Log($"{mousePosition} {ray}  {hit} {finalInputPosition}");
 
     return finalInputPosition;
   }

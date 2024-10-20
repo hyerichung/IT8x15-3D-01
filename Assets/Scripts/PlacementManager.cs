@@ -6,9 +6,6 @@ using UnityEngine;
 public class PlacementManager : MonoBehaviour
 {
   [SerializeField]
-  private GameObject mouseIndicator; // current mouse position indicator
-
-  [SerializeField]
   private PreviewManager preview;
 
   [SerializeField]
@@ -45,6 +42,8 @@ public class PlacementManager : MonoBehaviour
     Vector3 mousePosition = inputManager.GetSelectedLayerPosition(); // get current mouse pointing position
     Vector3Int gridPosition = grid.WorldToCell(mousePosition); // convert world position to grid position 
 
+    // Debug.Log(mousePosition);
+
     // check last preview position and check if the grid position stem from the same mouse position
     // if it's from same mouse position, no need to proceed further validity calculation
     // if it's from different mouse position, calculate validity and update preview position
@@ -52,7 +51,6 @@ public class PlacementManager : MonoBehaviour
 
     bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
 
-    mouseIndicator.transform.position = mousePosition;
     // convert grid position to world position -> update preview position
     preview.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
     // save last preview position with grid position
