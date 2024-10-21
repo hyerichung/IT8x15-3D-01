@@ -44,7 +44,7 @@ public class WaveSpawner : MonoBehaviour
 
 		countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
-		waveCountdownText.text = string.Format("{0:00.00}", countdown);
+		//waveCountdownText.text = string.Format("{0:00.00}", countdown);
 	}
 
 	IEnumerator SpawnWave()
@@ -62,6 +62,11 @@ public class WaveSpawner : MonoBehaviour
 		}
 
 		waveIndex++;
+
+		//if(waveIndex == waves.Length)
+  //      {
+		//	this.enabled = false;
+  //      }
 	}
 
 	void SpawnEnemy(GameObject enemy)

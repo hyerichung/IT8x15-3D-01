@@ -3,47 +3,57 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-	public float speed = 10f;
+	public float startSpeed = 10f;
 
-	private Transform target;
-	private int wavepointIndex = 0;
+	[HideInInspector]
+	public float speed;
+
+	public float startHealth = 100;
+	private float health;
+
+	public int worth = 50;
+
+	public GameObject deathEffect;
+
+	[Header("Unity Stuff")]
+	public Image healthBar;
+
+	private bool isDead = false;
 
 	void Start()
 	{
-		target = Waypoints.points[0];
+		speed = startSpeed;
+		health = startHealth;
 	}
 
-	void Update()
+	public void TakeDamage(float amount)
 	{
-		Vector3 dir = target.position - transform.position;
-		transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+		health -= amount;
 
-		Vector3 directionToWaypoint = target.position - transform.position;
-		transform.forward = Vector3.RotateTowards(transform.forward, directionToWaypoint, speed * Time.deltaTime, 0.0f);
-		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+		healthBar.fillAmount = health / startHealth;
 
-		if (Vector3.Distance(transform.position, target.position) <= 0.4f)
+		if (health <= 0 && !isDead)
 		{
-			GetNextWaypoint();
+			Die();
 		}
 	}
 
-	void GetNextWaypoint()
+	public void Slow(float pct)
 	{
-		if (wavepointIndex >= Waypoints.points.Length - 1)
-		{
-			EndPath();
-			return;
-		}
-
-		wavepointIndex++;
-		target = Waypoints.points[wavepointIndex];
+		speed = startSpeed * (1f - pct);
 	}
 
-	void EndPath()
+	void Die()
 	{
-		PlayerStats.Lives--;
+		isDead = true;
+
+		PlayerStats.Money += worth;
+
+		GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
+		Destroy(effect, 5f);
+
 		WaveSpawner.EnemiesAlive--;
+
 		Destroy(gameObject);
 	}
 }
