@@ -42,8 +42,6 @@ public class PlacementManager : MonoBehaviour
     Vector3 mousePosition = inputManager.GetSelectedLayerPosition(); // get current mouse pointing position
     Vector3Int gridPosition = grid.WorldToCell(mousePosition); // convert world position to grid position 
 
-    // Debug.Log(mousePosition);
-
     // check last preview position and check if the grid position stem from the same mouse position
     // if it's from same mouse position, no need to proceed further validity calculation
     // if it's from different mouse position, calculate validity and update preview position

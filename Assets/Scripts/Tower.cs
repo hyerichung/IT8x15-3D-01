@@ -6,7 +6,7 @@ public class Tower : MonoBehaviour
 {
   [Header("Attributes")]
   private Transform target;
-  public float range = 5f;
+  public float range = 15f;
   public float fireRate = 1f;
   private float fireCoundown = 0f;
 
@@ -17,7 +17,6 @@ public class Tower : MonoBehaviour
 
   public GameObject bulletPrefeb;
   public Transform firePoint;
-  public ModifyManager modifyManager;
 
   void Start()
   {
@@ -74,9 +73,7 @@ public class Tower : MonoBehaviour
 
   void Shoot()
   {
-    // Debug.Log("Shoot!");
-
-    GameObject misselGO = (GameObject)Instantiate(bulletPrefeb, firePoint.position, firePoint.rotation);
+    GameObject misselGO = Instantiate(bulletPrefeb, firePoint.position, firePoint.rotation);
 
     Missel missel = misselGO.GetComponent<Missel>();
 
