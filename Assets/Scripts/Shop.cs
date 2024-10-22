@@ -5,6 +5,8 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
   public TowerBlueprint blueTower;
+  public TowerBlueprint redTower;
+  public TowerBlueprint greenTower;
 
   BuildManager buildManager;
 
@@ -20,6 +22,6 @@ public class Shop : MonoBehaviour
 
   public void SelectRedTower()
   {
-    //  buildManager.SelectTowerToBuild(blueTower);
+    buildManager.SelectTowerToBuild(redTower);
   }
 }

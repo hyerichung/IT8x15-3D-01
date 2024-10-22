@@ -777,6 +777,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400016}
+  - component: {fileID: -1929921326516249568}
+  - component: {fileID: 2357401137106598513}
   m_Layer: 0
   m_Name: redTowerLevel2
   m_TagString: Untagged
@@ -794,10 +796,52 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 400014}
   - {fileID: 400012}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &-1929921326516249568
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100016}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &2357401137106598513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9c932fc8c5540508137a98b3d5f976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 15
+  fireRate: 1
+  partToRotate: {fileID: 3844024796942216677, guid: ec2e28b7df4ef49eeac91376a9da7276, type: 3}
+  enemyTag: Enemy
+  rotationSpeed: 10
+  bulletPrefeb: {fileID: 187074, guid: 6654b39e924a44301b3488369f084b39, type: 3}
+  firePoint: {fileID: 6806947089401250001, guid: ec2e28b7df4ef49eeac91376a9da7276, type: 3}
