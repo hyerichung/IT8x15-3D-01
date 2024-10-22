@@ -186,6 +186,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4173953609952965476, guid: 571af331941ccae4eb59ab267c03ec2c, type: 3}
   m_PrefabInstance: {fileID: 2060668}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 532257446}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -367,6 +368,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &41776537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1077,17 +1080,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemy: {fileID: 1788184232}
-    count: 5
+  - enemy: {fileID: 135048, guid: bb20a31181b631c42a2256dc63fab447, type: 3}
+    count: 6
     rate: 1
-  - enemy: {fileID: 15672645}
-    count: 5
+  - enemy: {fileID: 120022, guid: 334489abf60efa0489ca6ae4ef57d423, type: 3}
+    count: 6
     rate: 1
-  - enemy: {fileID: 362426991}
-    count: 5
+  - enemy: {fileID: 198892, guid: f66b5b1f5cf0cbf4082f435e2978785b, type: 3}
+    count: 6
+    rate: 1
+  - enemy: {fileID: 120022, guid: 334489abf60efa0489ca6ae4ef57d423, type: 3}
+    count: 6
+    rate: 1
+  - enemy: {fileID: 135048, guid: bb20a31181b631c42a2256dc63fab447, type: 3}
+    count: 6
+    rate: 1
+  - enemy: {fileID: 198892, guid: f66b5b1f5cf0cbf4082f435e2978785b, type: 3}
+    count: 6
+    rate: 1
+  - enemy: {fileID: 126080, guid: a9c9511eac1c486468ab49bb12fc53b7, type: 3}
+    count: 1
     rate: 1
   spawnPoint: {fileID: 131666101}
-  timeBetweenWaves: 2
+  timeBetweenWaves: 1
   waveCountdownText: {fileID: 0}
 --- !u!4 &119145248
 Transform:
@@ -1098,7 +1113,7 @@ Transform:
   m_GameObject: {fileID: 119145246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78.28244, y: 6.720263, z: -33.95214}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3345,6 +3360,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4173953609952965476, guid: 571af331941ccae4eb59ab267c03ec2c, type: 3}
   m_PrefabInstance: {fileID: 352231865}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_GameObject: {fileID: 315653570}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -3536,6 +3552,8 @@ MonoBehaviour:
   worth: 50
   deathEffect: {fileID: 362426991}
   healthBar: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &377814668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22857,6 +22875,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 398589228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &1788184231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22987,6 +23006,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1800478725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29921,6 +29942,3 @@ SceneRoots:
   - {fileID: 633567350}
   - {fileID: 140786736}
   - {fileID: 708322330}
-  - {fileID: 1788184231}
-  - {fileID: 15672644}
-  - {fileID: 362426990}
