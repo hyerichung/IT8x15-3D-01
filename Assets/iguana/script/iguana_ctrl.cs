@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class iguana_ctrl : MonoBehaviour { 
 	public float speed = 6.0f;

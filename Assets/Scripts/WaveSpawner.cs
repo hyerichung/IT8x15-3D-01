@@ -11,8 +11,8 @@ public class WaveSpawner : MonoBehaviour
 
   public Transform spawnPoint;
 
-  public float timeBetweenWaves = 5f;
-  private float countdown = 2f;
+	public float timeBetweenWaves = 5f;
+	private float countdown = 2f;
 
   public Text waveCountdownText;
 
@@ -60,14 +60,14 @@ public class WaveSpawner : MonoBehaviour
 
     waveIndex++;
 
-    //if(waveIndex == waves.Length)
-    //      {
-    //	this.enabled = false;
-    //      }
-  }
+		//if(waveIndex == waves.Length)
+  //      {
+		//	this.enabled = false;
+  //      }
+	}
 
-  void SpawnEnemy(GameObject enemy)
-  {
-    Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
-  }
+	void SpawnEnemy(GameObject enemy)
+	{
+		Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+	}
 }
