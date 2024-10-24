@@ -4,23 +4,77 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-  [Header("Attributes")]
-  private Transform target;
+  public Transform target;
+
+  [Header("General")]
   public float range = 15f;
+
+  [Header("Use Missels (default)")]
   public float fireRate = 1f;
-  private float fireCoundown = 0f;
+  private float fireCountdown = 0f;
+  public GameObject misselPrefeb;
+
+  [Header("Use Laser")]
+  public bool useLaser = false;
+  public GameObject laserPrefeb;
 
   [Header("Unity Setup Fields")]
   public Transform partToRotate;
   public string enemyTag = "Enemy";
   public float rotationSpeed = 10f;
 
-  public GameObject bulletPrefeb;
   public Transform firePoint;
 
   void Start()
   {
     InvokeRepeating("UpdateTarget", 0f, 0.5f);
+  }
+
+  void Update()
+  {
+    // 타겟 없음
+    if (target == null)
+    {
+      if (useLaser && Laser.instance != null)
+      {
+        // 타겟이 없으면 레이저 사용 중지
+        Laser.instance.DestroyLaser();
+      }
+      return;
+    };
+
+    // 타겟 존재
+    LockOnTarget();
+
+    // 레이저
+    if (useLaser)
+    {
+      ShootLaser();
+    }
+    else
+    {
+      // 미사일
+      if (fireCountdown <= 0f)
+      {
+        Shoot();
+        // want to shoot with 0.5 missels each second
+        fireCountdown = 1f / fireRate;
+      }
+
+      // when it reaches 0, shoot again
+      fireCountdown -= Time.deltaTime;
+    }
+  }
+
+  void LockOnTarget()
+  {
+    Vector3 dir = target.position - transform.position;
+    // how do we need to rotate myself in order to look this direction?
+    Quaternion lookRotation = Quaternion.LookRotation(dir);
+    // smooth transition from one state to another
+    Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
+    // only want to rotate angleY
+    partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
   }
 
   void UpdateTarget()
@@ -41,7 +95,7 @@ public class Tower : MonoBehaviour
       }
     }
 
-    if (nearestEnemy != null && shortestDistance < range)
+    if (nearestEnemy != null && shortestDistance <= range)
     {
       target = nearestEnemy.transform;
     }
@@ -51,29 +105,23 @@ public class Tower : MonoBehaviour
     }
   }
 
-  void Update()
+  void ShootLaser()
   {
-    if (target == null) return;
-
-    Vector3 dir = target.position - transform.position;
-    Quaternion lookRotation = Quaternion.LookRotation(dir); // how do we need to rotate myself in order to look this direction?
-    Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles; // smooth transition from one state to another
-
-    partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f); // only want to rotate angleY
-
-    if (fireCoundown <= 0f)
+    if (target != null)
     {
-      Shoot();
-      fireCoundown = 1f / fireRate; // want to shoot with 0.5 bullet each second
+      if (useLaser)
+      {
+        Laser.GenerateLaser(laserPrefeb, firePoint);
+
+        Laser.instance.Seek(target);
+      }
+      return;
     }
-
-    fireCoundown -= Time.deltaTime; // when it reaches 0, shoot again
-
   }
 
   void Shoot()
   {
-    GameObject misselGO = Instantiate(bulletPrefeb, firePoint.position, firePoint.rotation);
+    GameObject misselGO = Instantiate(misselPrefeb, firePoint.position, firePoint.rotation);
 
     Missel missel = misselGO.GetComponent<Missel>();
 
