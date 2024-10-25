@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
   public Transform target;
+  public List<Transform> targets;
 
   [Header("General")]
   public float range = 15f;
@@ -17,6 +18,14 @@ public class Tower : MonoBehaviour
   [Header("Use Laser")]
   public bool useLaser = false;
   public GameObject laserPrefeb;
+
+  [Header("Use Aura")]
+  public bool useAura = false;
+  public float auraRate = 0.5f;
+  private float auraCountdown = 0f;
+  public GameObject auraPrefeb;
+  public Vector3 auraOffset;
+  public static float numberOfTargets = 5;
 
   [Header("Unity Setup Fields")]
   public Transform partToRotate;
@@ -51,12 +60,29 @@ public class Tower : MonoBehaviour
     {
       ShootLaser();
     }
+    // 아우라
+    else if (useAura)
+    {
+      // numberOfTargets 넘으면 타겟들 초기화
+      if (targets.Count > numberOfTargets)
+      {
+        targets.Clear();
+      }
+
+      if (auraCountdown <= 0f)
+      {
+        ShootAura();
+        auraCountdown = 1f / auraRate;
+      }
+
+      auraCountdown -= Time.deltaTime;
+    }
     else
     {
       // 미사일
       if (fireCountdown <= 0f)
       {
-        Shoot();
+        ShootMissel();
         // want to shoot with 0.5 missels each second
         fireCountdown = 1f / fireRate;
       }
@@ -98,6 +124,8 @@ public class Tower : MonoBehaviour
     if (nearestEnemy != null && shortestDistance <= range)
     {
       target = nearestEnemy.transform;
+
+      targets.Add(target);
     }
     else
     {
@@ -107,6 +135,15 @@ public class Tower : MonoBehaviour
 
   void ShootLaser()
   {
+    // GameObject laserGO = Instantiate(laserPrefeb, firePoint.position, firePoint.rotation);
+
+    // Laser laser = laserGO.GetComponent<Laser>();
+
+    // if (laser != null)
+    // {
+    //   laser.Seek(target);
+    // }
+
     if (target != null)
     {
       if (useLaser)
@@ -119,7 +156,7 @@ public class Tower : MonoBehaviour
     }
   }
 
-  void Shoot()
+  void ShootMissel()
   {
     GameObject misselGO = Instantiate(misselPrefeb, firePoint.position, firePoint.rotation);
 
@@ -129,8 +166,20 @@ public class Tower : MonoBehaviour
     {
       missel.Seek(target);
     }
-
   }
+
+  void ShootAura()
+  {
+    GameObject auraGO = Instantiate(auraPrefeb, transform.position + auraOffset, Quaternion.Euler(-90, 0, 0));
+
+    Aura aura = auraGO.GetComponent<Aura>();
+
+    if (aura != null)
+    {
+      aura.setTargets(targets);
+    }
+  }
+
 
   void OnDrawGizmosSelected()
   {

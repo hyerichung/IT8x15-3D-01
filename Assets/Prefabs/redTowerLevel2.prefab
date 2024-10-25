@@ -677,6 +677,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8353238694200870942}
   - {fileID: 400010}
   - {fileID: 400008}
   - {fileID: 400006}
@@ -838,10 +839,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9c932fc8c5540508137a98b3d5f976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   range: 15
   fireRate: 1
-  partToRotate: {fileID: 3844024796942216677, guid: ec2e28b7df4ef49eeac91376a9da7276, type: 3}
+  misselPrefeb: {fileID: 0}
+  useLaser: 1
+  laserPrefeb: {fileID: 168570, guid: f8910e850e9dcdc44bb3454608bf7f64, type: 3}
+  useAura: 0
+  auraRate: 0.5
+  auraPrefeb: {fileID: 0}
+  partToRotate: {fileID: 8353238694200870942}
   enemyTag: Enemy
   rotationSpeed: 10
-  bulletPrefeb: {fileID: 187074, guid: 6654b39e924a44301b3488369f084b39, type: 3}
-  firePoint: {fileID: 6806947089401250001, guid: ec2e28b7df4ef49eeac91376a9da7276, type: 3}
+  firePoint: {fileID: 8353238694200870942}
+--- !u!1 &1274123980088248753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8353238694200870942}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8353238694200870942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274123980088248753}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.01, y: 2.91, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 400012}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -24,4 +24,9 @@ public class Shop : MonoBehaviour
   {
     buildManager.SelectTowerToBuild(redTower);
   }
+
+  public void SelectGreenTower()
+  {
+    buildManager.SelectTowerToBuild(greenTower);
+  }
 }

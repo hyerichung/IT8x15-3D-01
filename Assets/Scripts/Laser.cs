@@ -23,6 +23,12 @@ public class Laser : MonoBehaviour
 
   void Update()
   {
+    if (instance != null && instance != this)
+    {
+      Destroy(gameObject);
+      return;
+    };
+
     lineRenderer.SetPosition(0, firePoint.position);
     lineRenderer.SetPosition(1, target.position + new Vector3(0, target.position.y, 0));
   }
@@ -48,12 +54,11 @@ public class Laser : MonoBehaviour
     target = _target;
   }
 
+  // TODO: OnDestroy
   public void DestroyLaser()
   {
     target = null;
     instance = null;
 
-    Destroy(gameObject);
   }
-
 }

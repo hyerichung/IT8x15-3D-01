@@ -63,6 +63,7 @@ public class Node : MonoBehaviour
     PlayerStats.Money -= towerBlueprint.upgradeCost;
 
     Destroy(tower); // remove old tower
+    Laser.instance.DestroyLaser(); // FIXME: 과연 싱글톤을 레이저에 제대로 적용한 것일까?
 
     // build upgraded tower
     GameObject _tower = Instantiate(towerBlueprint.upgradedPrefeb, GetBuildPosition(), Quaternion.identity);
