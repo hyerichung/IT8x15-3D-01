@@ -29,8 +29,11 @@ public class Laser : MonoBehaviour
       return;
     };
 
-    lineRenderer.SetPosition(0, firePoint.position);
-    lineRenderer.SetPosition(1, target.position + new Vector3(0, target.position.y, 0));
+    if (firePoint != null && target != null)
+    {
+      lineRenderer.SetPosition(0, firePoint.position);
+      lineRenderer.SetPosition(1, target.position + new Vector3(0, target.position.y, 0));
+    }
   }
 
   public static void GenerateLaser(GameObject laserPrefeb, Transform firePoint)
@@ -54,11 +57,19 @@ public class Laser : MonoBehaviour
     target = _target;
   }
 
-  // TODO: OnDestroy
   public void DestroyLaser()
   {
     target = null;
     instance = null;
 
+    Destroy(gameObject);
+  }
+
+  void OnDestroy()
+  {
+    if (instance == this)
+    {
+      instance = null;
+    }
   }
 }
