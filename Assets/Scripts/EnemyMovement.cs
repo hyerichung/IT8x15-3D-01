@@ -8,14 +8,37 @@ public class EnemyMovement : MonoBehaviour
     private int wavepointIndex = 0;
     public float speed = 6.0f;
 
+    private GameObject hero;
     private Enemy enemy;
+
+    //private float distacne = 0.0f;
+
+    //private Animator anim;
 
     void Start()
     {
         enemy = GetComponent<Enemy>();
-
         target = Waypoints.points[0];
+
+        //hero = GameObject.FindGameObjectWithTag("Hero");
+        //anim = GetComponent<Animator>();
     }
+
+    //private void FixedUpdate()
+    //{
+    //    anim = WaveSpawner.anim;
+    //    Debug.Log(anim.name);
+
+    //    StartCoroutine(SetIntegers());
+
+    //    IEnumerator SetIntegers()
+    //    {
+    //        yield return null;
+    //        anim.SetInteger("battle", 1);
+    //        anim.SetInteger("moving", 5);
+
+    //    }
+    //}
 
     void Update()
     {
@@ -32,6 +55,9 @@ public class EnemyMovement : MonoBehaviour
         }
 
         enemy.speed = enemy.startSpeed;
+       
+        //distacne = hero.transform.position.x - transform.position.x;
+        
     }
 
     void GetNextWaypoint()
