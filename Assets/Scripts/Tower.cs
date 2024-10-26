@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
 {
   public Transform target;
   public List<Transform> targets;
+  public Enemy currentEnemy;
 
   [Header("General")]
   public float range = 15f;
@@ -120,6 +121,7 @@ public class Tower : MonoBehaviour
       {
         shortestDistance = distanceToEnemy;
         nearestEnemy = enemy;
+        currentEnemy = enemy.GetComponent<Enemy>();
       }
     }
 
@@ -154,7 +156,7 @@ public class Tower : MonoBehaviour
 
     if (missel != null)
     {
-      missel.Seek(target);
+      missel.Seek(target, currentEnemy);
     }
   }
 
