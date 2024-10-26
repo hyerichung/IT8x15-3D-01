@@ -497,12 +497,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9c932fc8c5540508137a98b3d5f976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   range: 15
   fireRate: 1.5
+  misselPrefeb: {fileID: 191840, guid: 6124dcfd1f9a5994f94c2cb2a9b5d81c, type: 3}
+  useLaser: 0
+  laserPrefeb: {fileID: 0}
+  useAura: 0
+  auraRate: 0.5
+  auraPrefeb: {fileID: 0}
   partToRotate: {fileID: 5664899044377281482}
   enemyTag: Enemy
   rotationSpeed: 10
-  bulletPrefeb: {fileID: 191840, guid: da8f9d57e8c1842c2af3d90609df3842, type: 3}
   firePoint: {fileID: 4478369745180700638}
 --- !u!136 &3904973673285529761
 CapsuleCollider:

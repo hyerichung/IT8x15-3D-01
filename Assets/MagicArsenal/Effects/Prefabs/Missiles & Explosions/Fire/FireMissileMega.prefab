@@ -9929,10 +9929,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 470822}
+  - component: {fileID: -6368390128162750518}
   - component: {fileID: 19918588}
   - component: {fileID: 19884922}
   - component: {fileID: 8232366}
-  - component: {fileID: 1709218361404486961}
   m_Layer: 0
   m_Name: FireMissileMega
   m_TagString: Untagged
@@ -9959,6 +9959,20 @@ Transform:
   - {fileID: 437756}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6368390128162750518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592ff1dc40f7f4937ad425e233a4a214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactEffect: {fileID: 136414, guid: d59fb75f8c3c18040903bc802beec898, type: 3}
+  speed: 70
 --- !u!199 &19918588
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -14826,20 +14840,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1709218361404486961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 592ff1dc40f7f4937ad425e233a4a214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactEffect: {fileID: 136414, guid: 32806d8e64c3345a78f82333e35fd693, type: 3}
-  speed: 70
 --- !u!1 &199996
 GameObject:
   m_ObjectHideFlags: 0

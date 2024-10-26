@@ -14406,7 +14406,7 @@ GameObject:
   - component: {fileID: 19819330}
   - component: {fileID: 19945536}
   - component: {fileID: 8287394}
-  - component: {fileID: -7953958528577734250}
+  - component: {fileID: 4006552093877531040}
   m_Layer: 0
   m_Name: SpaceSparkleMissile
   m_TagString: Untagged
@@ -19308,7 +19308,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &-7953958528577734250
+--- !u!114 &4006552093877531040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

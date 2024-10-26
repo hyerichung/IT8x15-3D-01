@@ -5,8 +5,8 @@ using UnityEngine;
 namespace MagicArsenal
 {
 
-public class MagicBeamStatic : MonoBehaviour
-{
+  public class MagicBeamStatic : MonoBehaviour
+  {
 
     [Header("Prefabs")]
     public GameObject beamLineRendererPrefab; //Put a prefab with a line renderer onto here.
@@ -29,84 +29,84 @@ public class MagicBeamStatic : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     private void OnEnable()
     {
-        if (alwaysOn) //When the object this script is attached to is enabled, spawn the beam.
-            SpawnBeam();
+      if (alwaysOn) //When the object this script is attached to is enabled, spawn the beam.
+        SpawnBeam();
     }
 
     private void OnDisable() //If the object this script is attached to is disabled, remove the beam.
     {
-        RemoveBeam();
+      RemoveBeam();
     }
 
     void FixedUpdate()
     {
-        if (beam) //Updates the beam
+      if (beam) //Updates the beam
+      {
+        line.SetPosition(0, transform.position);
+
+        Vector3 end;
+        RaycastHit hit;
+        if (beamCollides && Physics.Raycast(transform.position, transform.forward, out hit)) //Checks for collision
+          end = hit.point - (transform.forward * beamEndOffset);
+        else
+          end = transform.position + (transform.forward * beamLength);
+
+        line.SetPosition(1, end);
+
+        if (beamStart)
         {
-            line.SetPosition(0, transform.position);
-
-            Vector3 end;
-            RaycastHit hit;
-            if (beamCollides && Physics.Raycast(transform.position, transform.forward, out hit)) //Checks for collision
-                end = hit.point - (transform.forward * beamEndOffset);
-            else
-                end = transform.position + (transform.forward * beamLength);
-
-            line.SetPosition(1, end);
-
-            if (beamStart)
-            {
-                beamStart.transform.position = transform.position;
-                beamStart.transform.LookAt(end);
-            }
-            if (beamEnd)
-            {
-                beamEnd.transform.position = end;
-                beamEnd.transform.LookAt(beamStart.transform.position);
-            }
-
-            float distance = Vector3.Distance(transform.position, end);
-            line.material.mainTextureScale = new Vector2(distance / textureLengthScale, 1); //This sets the scale of the texture so it doesn't look stretched
-            line.material.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0); //This scrolls the texture along the beam if not set to 0
+          beamStart.transform.position = transform.position;
+          beamStart.transform.LookAt(end);
         }
+        if (beamEnd)
+        {
+          beamEnd.transform.position = end;
+          beamEnd.transform.LookAt(beamStart.transform.position);
+        }
+
+        float distance = Vector3.Distance(transform.position, end);
+        line.material.mainTextureScale = new Vector2(distance / textureLengthScale, 1); //This sets the scale of the texture so it doesn't look stretched
+        line.material.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0); //This scrolls the texture along the beam if not set to 0
+      }
     }
 
     public void SpawnBeam() //This function spawns the prefab with linerenderer
     {
-        if (beamLineRendererPrefab)
-        {
-            if (beamStartPrefab)
-                beamStart = Instantiate(beamStartPrefab);
-            if (beamEndPrefab)
-                beamEnd = Instantiate(beamEndPrefab);
-            beam = Instantiate(beamLineRendererPrefab);
-            beam.transform.position = transform.position;
-            beam.transform.parent = transform;
-            beam.transform.rotation = transform.rotation;
-            line = beam.GetComponent<LineRenderer>();
-            line.useWorldSpace = true;
-            #if UNITY_5_5_OR_NEWER
-			line.positionCount = 2;
-			#else
+      if (beamLineRendererPrefab)
+      {
+        if (beamStartPrefab)
+          beamStart = Instantiate(beamStartPrefab);
+        if (beamEndPrefab)
+          beamEnd = Instantiate(beamEndPrefab);
+        beam = Instantiate(beamLineRendererPrefab);
+        beam.transform.position = transform.position;
+        beam.transform.parent = transform;
+        beam.transform.rotation = transform.rotation;
+        line = beam.GetComponent<LineRenderer>();
+        line.useWorldSpace = true;
+#if UNITY_5_5_OR_NEWER
+        line.positionCount = 2;
+#else
 			line.SetVertexCount(2); 
-			#endif
-        }
-        else
-            print("Add a prefab with a line renderer to the MagicBeamStatic script on " + gameObject.name + "!");
+#endif
+      }
+      else
+        print("Add a prefab with a line renderer to the MagicBeamStatic script on " + gameObject.name + "!");
     }
 
     public void RemoveBeam() //This function removes the prefab with linerenderer
     {
-        if (beam)
-            Destroy(beam);
-        if (beamStart)
-            Destroy(beamStart);
-        if (beamEnd)
-            Destroy(beamEnd);
+      if (beam)
+        Destroy(beam);
+      if (beamStart)
+        Destroy(beamStart);
+      if (beamEnd)
+        Destroy(beamEnd);
     }
-}
+  }
 }
