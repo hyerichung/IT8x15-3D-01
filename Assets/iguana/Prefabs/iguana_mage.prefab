@@ -2503,7 +2503,7 @@ MonoBehaviour:
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 173810}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
 --- !u!1 &174706
 GameObject:
