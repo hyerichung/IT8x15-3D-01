@@ -7,6 +7,7 @@ public class Tower : MonoBehaviour
   public Transform target;
   public List<Transform> targets;
   public Enemy currentEnemy;
+  public List<Enemy> currentEnemies;
 
   [Header("General")]
   public float range = 15f;
@@ -121,6 +122,7 @@ public class Tower : MonoBehaviour
       {
         shortestDistance = distanceToEnemy;
         nearestEnemy = enemy;
+
         currentEnemy = enemy.GetComponent<Enemy>();
       }
     }
@@ -146,6 +148,8 @@ public class Tower : MonoBehaviour
 
     lineRenderer.SetPosition(0, firePoint.position);
     lineRenderer.SetPosition(1, target.position + new Vector3(0, target.position.y, 0));
+
+    currentEnemy.TakeDamage(0.25f);
   }
 
   void ShootMissel()
