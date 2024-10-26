@@ -1816,6 +1816,7 @@ GameObject:
   - component: {fileID: 417384}
   - component: {fileID: 9503208}
   - component: {fileID: 14349170}
+  - component: {fileID: 1940082775372055146}
   m_Layer: 0
   m_Name: ent_1
   m_TagString: Enemy
@@ -1888,3 +1889,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.41, z: 0}
+--- !u!114 &1940082775372055146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5478181ad88eaab43947160d70cc236a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSpeed: 10
+  speed: 0
+  startHealth: 100
+  worth: 50
+  deathEffect: {fileID: 198892}
+  healthBar: {fileID: 0}
