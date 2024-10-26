@@ -6,11 +6,11 @@ public class EnemyMovement : MonoBehaviour
 {
     private Transform target;
     private int wavepointIndex = 0;
-    public float speed = 6.0f; private Enemy enemy;
+    public float speed = 6.0f; 
+    private Enemy enemy;
 
-    private GameObject hero;
-    //private GameObject spwan_enemy;
-    private float distacne = 0.0f;
+    private Transform hero;
+    private float distance = 0.0f;
 
     private Animator anim;
 
@@ -19,43 +19,57 @@ public class EnemyMovement : MonoBehaviour
         enemy = GetComponent<Enemy>();
         target = Waypoints.points[0];
 
-        hero = GameObject.FindGameObjectWithTag("Hero");
-        //spwan_enemy = GameObject.FindGameObjectWithTag("Enemy");
-
+        hero = GameObject.FindGameObjectWithTag("Hero").transform;
         anim = GetComponent<Animator>();
     }
 
     private void Update()
-    {   
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+    {
+        enemy.speed = enemy.startSpeed;
+        anim = WaveSpawner.anim;
 
-        Vector3 directionToWaypoint = target.position - transform.position;
-        transform.forward = Vector3.RotateTowards(transform.forward, directionToWaypoint, speed * Time.deltaTime, 0.0f);
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        Vector3 dir = target.position - transform.position;
+        distance = Vector3.Distance(transform.position, hero.transform.position);
+
+        if (distance <= 5.5f)
+        {
+            transform.Translate(0.001f, 0.001f, 0.001f);
+            MonsterAttack();            
+        }
+        else
+        {
+            MonsterNormalMovement(dir);
+        }
         
+        //if (Vector3.Distance(transform.position, target.position) <= 0.4f)
+        //{
+        //    GetNextWaypoint();
+        //}
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "Hero")
+        {
+            enemy.startHealth -= 10.0f;
+            if(enemy.startHealth == 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+
+    void MonsterNormalMovement(Vector3 dir)
+    {
+        transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+        transform.LookAt(target);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
             GetNextWaypoint();
         }
 
-        enemy.speed = enemy.startSpeed;
-
-        anim = WaveSpawner.anim;
-
-        MonsterAttack();
-
-        //Debug.Log(Vector3.Distance(hero.transform.position, transform.position));
-        //if (Vector3.Distance(hero.transform.position, transform.position) < 10.0f)
-        //{
-        //    MonsterAttack();
-        //}
-        //else
-        //{
-        //    anim.SetInteger("battle", 0);
-        //    anim.SetInteger("moving", 1);            
-        //}
     }
 
     void MonsterAttack()
@@ -63,31 +77,22 @@ public class EnemyMovement : MonoBehaviour
         if (anim != null)
         {
             switch (anim.name)
-            {
-                case "succubus_all(Clone)":
-                    anim.SetInteger("battle", 1);
+            {                
+                case "succubus_warrior(Clone)":                    
+                    anim.SetInteger("battle", 1);                    
                     anim.SetInteger("moving", 4);
                     break;
                 case "Frogman_beast_blu(Clone)":
                     anim.SetInteger("battle", 1);
                     anim.SetInteger("moving", 10);
                     break;
-                case "iguana_mage(Clone)":
+                case "iguana_warrior(Clone)":
                     anim.SetInteger("battle", 1);
                     anim.SetInteger("moving", 3);
                     break;
                 case "Monster_rabbit(Clone)":
-                    Debug.Log("Monster Attack: " + anim.name);
-                    anim.SetInteger("battle", 1);
-                    int n = Random.Range(0, 2);
-                    if (n == 0)
-                    {
-                        anim.SetInteger("moving", 3);
-                    }
-                    else
-                    {
-                        anim.SetInteger("moving", 4);
-                    }
+                    anim.SetInteger("battle", 1);                    
+                    anim.SetInteger("moving", 3);                    
                     break;
                 case "Goblins_all(Clone)":
                     anim.SetInteger("battle", 1);
@@ -104,6 +109,11 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
+
+    //IEnumerator AttackAndMoveOn()
+    //{
+    //    yield return new WaitForSeconds(2.0f);
+    //}
 
     void GetNextWaypoint()
     {

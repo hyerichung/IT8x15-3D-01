@@ -736,7 +736,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.2615287, y: -0.009, z: 0.020425318}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 401736}
@@ -808,7 +808,7 @@ MonoBehaviour:
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 122110}
   healthBar: {fileID: 0}
 --- !u!114 &-2961718350581514174
 MonoBehaviour:

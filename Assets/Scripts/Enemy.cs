@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     {
         health -= amount;
 
-        healthBar.fillAmount = health / startHealth;
+        //healthBar.fillAmount = health / startHealth;
 
         if (health <= 0 && !isDead)
         {
