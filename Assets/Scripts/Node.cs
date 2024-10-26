@@ -64,11 +64,6 @@ public class Node : MonoBehaviour
 
     Destroy(tower); // remove old tower
 
-    if (Laser.instance != null)
-    {
-      Laser.instance.DestroyLaser(); // destroy laser singleton
-    }
-
     // build upgraded tower
     GameObject _tower = Instantiate(towerBlueprint.upgradedPrefeb, GetBuildPosition(), Quaternion.identity);
     tower = _tower;

@@ -17,7 +17,7 @@ public class Tower : MonoBehaviour
 
   [Header("Use Laser")]
   public bool useLaser = false;
-  public GameObject laserPrefeb;
+  public LineRenderer lineRenderer;
 
   [Header("Use Aura")]
   public bool useAura = false;
@@ -44,10 +44,12 @@ public class Tower : MonoBehaviour
     // 타겟 없음
     if (target == null)
     {
-      if (useLaser && Laser.instance != null)
+      if (useLaser)
       {
-        // 타겟이 없으면 레이저 사용 중지
-        Laser.instance.DestroyLaser();
+        if (lineRenderer.enabled)
+        {
+          lineRenderer.enabled = false;
+        }
       }
       return;
     };
@@ -135,25 +137,13 @@ public class Tower : MonoBehaviour
 
   void ShootLaser()
   {
-    // GameObject laserGO = Instantiate(laserPrefeb, firePoint.position, firePoint.rotation);
-
-    // Laser laser = laserGO.GetComponent<Laser>();
-
-    // if (laser != null)
-    // {
-    //   laser.Seek(target);
-    // }
-
-    if (target != null)
+    if (!lineRenderer.enabled)
     {
-      if (useLaser)
-      {
-        Laser.GenerateLaser(laserPrefeb, firePoint);
-
-        Laser.instance.Seek(target);
-      }
-      return;
+      lineRenderer.enabled = true;
     }
+
+    lineRenderer.SetPosition(0, firePoint.position);
+    lineRenderer.SetPosition(1, target.position + new Vector3(0, target.position.y, 0));
   }
 
   void ShootMissel()
