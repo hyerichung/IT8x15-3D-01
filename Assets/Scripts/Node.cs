@@ -63,7 +63,11 @@ public class Node : MonoBehaviour
     PlayerStats.Money -= towerBlueprint.upgradeCost;
 
     Destroy(tower); // remove old tower
-    Laser.instance.DestroyLaser(); // destroy laser singleton
+
+    if (Laser.instance != null)
+    {
+      Laser.instance.DestroyLaser(); // destroy laser singleton
+    }
 
     // build upgraded tower
     GameObject _tower = Instantiate(towerBlueprint.upgradedPrefeb, GetBuildPosition(), Quaternion.identity);

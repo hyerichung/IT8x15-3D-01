@@ -174,7 +174,7 @@ public class Tower : MonoBehaviour
 
     Aura aura = auraGO.GetComponent<Aura>();
 
-    if (aura != null)
+    if (aura != null && targets.Count <= numberOfTargets)
     {
       aura.setTargets(targets);
     }
