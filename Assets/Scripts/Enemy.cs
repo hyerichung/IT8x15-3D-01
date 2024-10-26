@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
   public int worth = 50;
 
+  public bool isSlowing = false;  // Slow 상태를 추적하는 변수
+
   public GameObject deathEffect;
 
   [Header("Unity Stuff")]
@@ -38,9 +40,15 @@ public class Enemy : MonoBehaviour
     }
   }
 
-  public void Slow(float pct)
+  public void ApplySlow(float factor)
   {
-    speed = startSpeed * (1f - pct);
+    speed = startSpeed * factor;
+    Debug.Log($"{factor}, {startSpeed * factor}, {speed}");
+  }
+
+  public void RestoreSpeed()
+  {
+    speed = startSpeed;
   }
 
   void Die()

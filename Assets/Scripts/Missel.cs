@@ -5,16 +5,14 @@ using UnityEngine;
 
 public class Missel : MonoBehaviour
 {
-  private Transform target;
   public GameObject impactEffect;
 
   public Enemy enemy;
 
   public float speed = 70f;
 
-  public void Seek(Transform _target, Enemy _enemy)
+  public void Seek(Enemy _enemy)
   {
-    target = _target;
     enemy = _enemy;
 
     Debug.Log(enemy.name);
@@ -22,13 +20,13 @@ public class Missel : MonoBehaviour
 
   void Update()
   {
-    if (target == null)
+    if (enemy == null)
     {
       Destroy(gameObject);
       return;
     }
 
-    Vector3 dir = target.position - transform.position;
+    Vector3 dir = enemy.transform.position - transform.position;
 
     float distanceThisFrame = speed * Time.deltaTime;
 
