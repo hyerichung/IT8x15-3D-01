@@ -53,7 +53,7 @@ public class BuildManager : MonoBehaviour
     return towerToBuild;
   }
 
-  public void StopBuildTowerOn(Node node)
+  public void StopBuildTowerOn()
   {
     towerToBuild = null;
   }

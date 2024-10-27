@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
   public int worth = 50;
 
-  public bool isSlowing = false;  // Slow 상태를 추적하는 변수
+  public bool isSlowing = false;
 
   public GameObject deathEffect;
 
@@ -32,8 +32,6 @@ public class Enemy : MonoBehaviour
   public void TakeDamage(float amount)
   {
     health -= amount;
-
-    //healthBar.fillAmount = health / startHealth;
 
     if (health <= 0 && !isDead)
     {
@@ -56,10 +54,6 @@ public class Enemy : MonoBehaviour
     isDead = true;
 
     PlayerStats.Money += worth;
-
-    // TODO:
-    // GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
-    // Destroy(effect, 5f);
 
     WaveSpawner.EnemiesAlive--;
 

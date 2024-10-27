@@ -40,7 +40,7 @@ public class Node : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.Escape))
     {
       renderer.material.color = startColor;
-      buildManager.StopBuildTowerOn(this);
+      buildManager.StopBuildTowerOn();
     }
   }
 

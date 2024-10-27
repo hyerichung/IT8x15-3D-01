@@ -18,22 +18,27 @@ public class Missel : MonoBehaviour
 
   void Update()
   {
+    // If there is no target, destroy the missile
     if (enemy == null)
     {
       Destroy(gameObject);
       return;
     }
 
+    // Calculate the direction towards the enemy
     Vector3 dir = enemy.transform.position - transform.position;
 
+    // Calculate the distance the missile should move this frame
     float distanceThisFrame = speed * Time.deltaTime;
 
+    // If the missile has reached or overshot the target, trigger impact
     if (dir.magnitude <= distanceThisFrame)
-    { // already hit the object, overshoot
+    {
       HitTarget();
       return;
     }
 
+    // Move the missile towards the enemy
     transform.Translate(dir.normalized * distanceThisFrame, Space.World);
   }
 
@@ -44,7 +49,6 @@ public class Missel : MonoBehaviour
     enemy.TakeDamage(30);
 
     Destroy(effectInstance, 2f);
-
     Destroy(gameObject);
   }
 }

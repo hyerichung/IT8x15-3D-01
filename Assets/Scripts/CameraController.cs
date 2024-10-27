@@ -6,26 +6,26 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
   [SerializeField]
-  private Transform target; // target that camera follows
+  private Transform target; // Target that the camera follows
   [SerializeField]
-  private float minDistance = 3; // min distance between target and camera
+  private float minDistance = 3;
   [SerializeField]
   private float maxDistance = 30;
   [SerializeField]
   private float wheelSpeed = 30;
 
-  private float distance; // distance between target and camera
+  private float distance;
 
   private void Awake()
   {
-    // setup distance between target and camera based on initial target and camera position
     distance = Vector3.Distance(transform.position, target.position);
   }
 
   private void Update()
   {
-    // put the limit the distance between target and camera
+    // Adjust the distance between the target and the camera based on mouse scroll input
     distance -= Input.GetAxis("Mouse ScrollWheel") * wheelSpeed * Time.deltaTime;
+    // Clamp the distance to ensure it stays within min and max limits
     distance = Mathf.Clamp(distance, minDistance, maxDistance);
   }
 }

@@ -11,10 +11,10 @@ public class Tower : MonoBehaviour
   [Header("General")]
   public float range = 15f;
 
-  [Header("Use Missels (default)")]
+  [Header("Use Missiles (default)")]
   public float fireRate = 1f;
   private float fireCountdown = 0f;
-  public GameObject misselPrefeb;
+  public GameObject missilePrefab;
 
   [Header("Use Laser")]
   public bool useLaser = false;
@@ -24,7 +24,7 @@ public class Tower : MonoBehaviour
   public bool useAura = false;
   public float auraRate = 0.5f;
   private float auraCountdown = 0f;
-  public GameObject auraPrefeb;
+  public GameObject auraPrefab;
   public Vector3 auraOffset;
   public static float numberOfTargets = 5;
 
@@ -42,31 +42,24 @@ public class Tower : MonoBehaviour
 
   void Update()
   {
-    // 타겟 없음
     if (target == null)
     {
-      if (useLaser)
+      if (useLaser && lineRenderer.enabled)
       {
-        if (lineRenderer.enabled)
-        {
-          lineRenderer.enabled = false;
-        }
+        lineRenderer.enabled = false;
       }
       return;
-    };
+    }
 
-    // 타겟 존재
     LockOnTarget();
 
-    // 레이저
     if (useLaser)
     {
       ShootLaser();
     }
-    // 아우라
     else if (useAura)
     {
-      // numberOfTargets 넘으면 타겟들 초기화
+      // Clear target list if it exceeds the maximum number of targets
       if (currentEnemies.Count > numberOfTargets)
       {
         currentEnemies.Clear();
@@ -82,37 +75,38 @@ public class Tower : MonoBehaviour
     }
     else
     {
-      // 미사일
       if (fireCountdown <= 0f)
       {
-        ShootMissel();
-        // want to shoot with 0.5 missels each second
+        ShootMissile();
         fireCountdown = 1f / fireRate;
       }
 
-      // when it reaches 0, shoot again
+      // Decrease the countdown until it reaches 0 to shoot again
       fireCountdown -= Time.deltaTime;
     }
   }
 
   void LockOnTarget()
   {
+    // Calculate the direction to the target
     Vector3 dir = target.position - transform.position;
-    // how do we need to rotate myself in order to look this direction?
+    // Determine the rotation needed to look at the target
     Quaternion lookRotation = Quaternion.LookRotation(dir);
-    // smooth transition from one state to another
+    // Smoothly rotate to face the target
     Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-    // only want to rotate angleY
+    // Rotate only on the Y-axis
     partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
   }
 
   void UpdateTarget()
   {
+    // Find all game objects tagged as enemies
     GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
     GameObject nearestEnemy = null;
 
     float shortestDistance = Mathf.Infinity;
 
+    // Loop through each enemy to find the closest one
     foreach (GameObject enemy in enemies)
     {
       float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
@@ -125,6 +119,7 @@ public class Tower : MonoBehaviour
       }
     }
 
+    // Set target if a nearby enemy is within range
     if (nearestEnemy != null && shortestDistance <= range)
     {
       target = nearestEnemy.transform;
@@ -145,27 +140,28 @@ public class Tower : MonoBehaviour
       lineRenderer.enabled = true;
     }
 
+    // Set the start and end points of the laser
     lineRenderer.SetPosition(0, firePoint.position);
     lineRenderer.SetPosition(1, target.position + new Vector3(0, target.position.y, 0));
 
     currentEnemy.TakeDamage(0.25f);
   }
 
-  void ShootMissel()
+  void ShootMissile()
   {
-    GameObject misselGO = Instantiate(misselPrefeb, firePoint.position, firePoint.rotation);
+    GameObject missileGO = Instantiate(missilePrefab, firePoint.position, firePoint.rotation);
 
-    Missel missel = misselGO.GetComponent<Missel>();
+    Missel missile = missileGO.GetComponent<Missel>();
 
-    if (missel != null)
+    if (missile != null)
     {
-      missel.Seek(currentEnemy);
+      missile.Seek(currentEnemy);
     }
   }
 
   void ShootAura()
   {
-    GameObject auraGO = Instantiate(auraPrefeb, transform.position + auraOffset, Quaternion.Euler(-90, 0, 0));
+    GameObject auraGO = Instantiate(auraPrefab, transform.position + auraOffset, Quaternion.Euler(-90, 0, 0));
 
     Aura aura = auraGO.GetComponent<Aura>();
 
@@ -174,7 +170,6 @@ public class Tower : MonoBehaviour
       aura.setTargets(currentEnemies);
     }
   }
-
 
   void OnDrawGizmosSelected()
   {
