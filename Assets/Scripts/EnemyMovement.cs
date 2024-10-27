@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
   private Animator anim;
 
-    void Start()
+  void Start()
   {
     enemy = GetComponent<Enemy>();
     target = Waypoints.points[0];
@@ -116,11 +116,16 @@ public class EnemyMovement : MonoBehaviour
   {
     PlayerStats.Lives--;
     WaveSpawner.EnemiesAlive--;
+
     Destroy(gameObject);
 
     if (PlayerStats.Lives == 0)
     {
-        SceneManager.LoadScene("GameResult");
+      SceneManager.LoadScene("GameResult");
     }
-   }
+    if (WaveSpawner.EnemiesAlive == 0 && PlayerStats.Rounds == 7)
+    {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+  }
 }

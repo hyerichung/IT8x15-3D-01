@@ -77,7 +77,7 @@ public class Tower : MonoBehaviour
     {
       if (fireCountdown <= 0f)
       {
-        ShootMissile();
+        ShootMissel();
         fireCountdown = 1f / fireRate;
       }
 
@@ -147,7 +147,7 @@ public class Tower : MonoBehaviour
     currentEnemy.TakeDamage(0.25f);
   }
 
-  void ShootMissile()
+  void ShootMissel()
   {
     GameObject missileGO = Instantiate(missilePrefab, firePoint.position, firePoint.rotation);
 

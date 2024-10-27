@@ -502,12 +502,12 @@ MonoBehaviour:
   currentEnemies: []
   range: 35
   fireRate: 1.5
-  misselPrefeb: {fileID: 191840, guid: 6124dcfd1f9a5994f94c2cb2a9b5d81c, type: 3}
+  missilePrefab: {fileID: 191840, guid: 6124dcfd1f9a5994f94c2cb2a9b5d81c, type: 3}
   useLaser: 0
   lineRenderer: {fileID: 0}
   useAura: 0
   auraRate: 0.5
-  auraPrefeb: {fileID: 0}
+  auraPrefab: {fileID: 0}
   auraOffset: {x: 0, y: 0, z: 0}
   partToRotate: {fileID: 5664899044377281482}
   enemyTag: Enemy

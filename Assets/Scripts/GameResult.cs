@@ -1,25 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameResult : MonoBehaviour
 {
-    public TextMeshProUGUI monstersKilledText;
-    public TextMeshProUGUI gameResultText;
-    private void Update()
+  public Text gameResultText;
+
+  private void Update()
+  {
+    gameResultText.text = "";
+
+    if (PlayerStats.Lives == 0)
     {
-        monstersKilledText.text = "M";
-        gameResultText.text = "";
+      gameResultText.text = "Game Over 🥹";
     }
-    public void PlayAgain()
+    else if (PlayerStats.Rounds == 7)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+      gameResultText.text = "Victory 🥳";
     }
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+  }
+  public void PlayAgain()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+  }
+  public void QuitGame()
+  {
+    Application.Quit();
+  }
 
 }

@@ -14122,7 +14122,6 @@ MonoBehaviour:
   characterController: {fileID: 983322119}
   moveSpeed: 5
   jumpForce: 1.8
-  groundOffset: 100
   enemyTag: Enemy
   currentEnemy: {fileID: 0}
   currentEnemies: []
@@ -30097,7 +30096,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 1/2
+  m_Text: Level 2/2
 --- !u!222 &1852121957
 CanvasRenderer:
   m_ObjectHideFlags: 0
