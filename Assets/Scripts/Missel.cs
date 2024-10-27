@@ -43,7 +43,7 @@ public class Missel : MonoBehaviour
   {
     GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
 
-    enemy.TakeDamage(1000);
+    enemy.TakeDamage(30);
 
     Destroy(effectInstance, 2f);
 
