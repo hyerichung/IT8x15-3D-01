@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
@@ -14,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
   private Animator anim;
 
-  void Start()
+    void Start()
   {
     enemy = GetComponent<Enemy>();
     target = Waypoints.points[0];
@@ -31,9 +32,6 @@ public class EnemyMovement : MonoBehaviour
     anim = WaveSpawner.anim;
 
     Vector3 dir = target.position - transform.position;
-    //transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
-    //transform.LookAt(target);
-
     distance = Vector3.Distance(transform.position, hero.transform.position);
 
     if (distance <= 5.5f)
@@ -51,20 +49,6 @@ public class EnemyMovement : MonoBehaviour
     //    GetNextWaypoint();
     //}
   }
-
-  private void OnTriggerStay(Collider other)
-  {
-    if (other.gameObject.name == "Hero")
-    {
-      //Debug.Log("trigger");
-      enemy.startHealth -= 10.0f;
-      if (enemy.startHealth == 0)
-      {
-        EndPath();
-      }
-    }
-  }
-
 
   void MonsterNormalMovement(Vector3 dir)
   {
@@ -133,5 +117,10 @@ public class EnemyMovement : MonoBehaviour
     PlayerStats.Lives--;
     WaveSpawner.EnemiesAlive--;
     Destroy(gameObject);
-  }
+
+    if (PlayerStats.Lives == 0)
+    {
+        SceneManager.LoadScene("GameResult");
+    }
+   }
 }

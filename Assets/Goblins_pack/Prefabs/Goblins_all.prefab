@@ -2645,7 +2645,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.594935, y: -0.009, z: -3.238997}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 415992}
@@ -2717,9 +2717,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 6
   speed: 0
+  EnemyCount: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 0}
+  isSlowing: 0
+  deathEffect: {fileID: 179592}
   healthBar: {fileID: 0}
 --- !u!114 &-5546733040687393270
 MonoBehaviour:
@@ -2734,6 +2736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.7
+  livesCountdownText: {fileID: 0}
 --- !u!1 &179900
 GameObject:
   m_ObjectHideFlags: 0

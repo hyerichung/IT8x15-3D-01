@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 
   [HideInInspector]
   public float speed;
+  public int EnemyCount;
 
   public float startHealth = 100;
   private float health;
@@ -20,7 +21,7 @@ public class Enemy : MonoBehaviour
   [Header("Unity Stuff")]
   public Image healthBar;
 
-  private bool isDead = false;
+  private bool isDead = false;    
 
   void Start()
   {
@@ -43,6 +44,7 @@ public class Enemy : MonoBehaviour
   public void ApplySlow(float factor)
   {
     speed = startSpeed * factor;
+    Debug.Log($"{factor}, {startSpeed * factor}, {speed}");
   }
 
   public void RestoreSpeed()

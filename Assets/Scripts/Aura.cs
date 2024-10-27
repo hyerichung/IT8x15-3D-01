@@ -18,6 +18,7 @@ public class Aura : MonoBehaviour
 
   void Update()
   {
+    Debug.Log(currentEnemies.Count);
     // 타워 주변의 적 targetEnemies들에게 아우라 발동, 슬로우 다운 할 예정
     if (currentEnemies.Count <= Tower.numberOfTargets && targetEnabled == true)
     {
@@ -45,12 +46,6 @@ public class Aura : MonoBehaviour
   {
     foreach (Enemy currentEnemy in currentEnemies)
     {
-      if (currentEnemy == null)
-      {
-        Destroy(gameObject);
-        return;
-      }
-
 
       GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
       effectInstance.transform.position = currentEnemy.transform.position;

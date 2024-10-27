@@ -5,22 +5,28 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class Movement3D : MonoBehaviour
 {
-  private Vector3 moveDirection;
+    private Vector3 moveDirection;
 
-  [SerializeField]
-  private CharacterController characterController;
+    [SerializeField]
+    private CharacterController characterController;
 
-  [SerializeField]
-  private float moveSpeed = 5.0f;
-  private float rotationSpeed = 100f;
-  [SerializeField]
-  private float jumpForce = 10f;
-  private float gravity = -9.81f;
-  private float accumulatedRotationAngleY = 0f;
-  [SerializeField]
-  private float groundOffset = 100f;
+    [SerializeField]
+    private float moveSpeed = 5.0f;
+    private float rotationSpeed = 100f;
+    [SerializeField]
+    private float jumpForce = 10f;
+    private float gravity = -9.81f;
+    private float accumulatedRotationAngleY = 0f;
+    [SerializeField]
+    private float groundOffset = 100f;
+  
+    public string enemyTag = "Enemy";
+    public Enemy currentEnemy;
+    public List<Enemy> currentEnemies;
 
-  void Awake()
+    public Transform target;
+    public float range = 5.0f;
+    void Awake()
   {
     characterController = GetComponent<CharacterController>();
   }
@@ -45,11 +51,11 @@ public class Movement3D : MonoBehaviour
     // center: 0, left key: -x, right key: +x
     if (Input.GetKey(KeyCode.LeftArrow))
     {
-      accumulatedRotationAngleY -= rotationSpeed * Time.deltaTime;
+        accumulatedRotationAngleY -= rotationSpeed * Time.deltaTime;
     }
     else if (Input.GetKey(KeyCode.RightArrow))
     {
-      accumulatedRotationAngleY += rotationSpeed * Time.deltaTime;
+        accumulatedRotationAngleY += rotationSpeed * Time.deltaTime;
     }
 
     // keep angle between -360 to 360
@@ -60,6 +66,13 @@ public class Movement3D : MonoBehaviour
 
     // apply angle y for rotate object
     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    
+    if (Input.GetKeyDown(KeyCode.Z))
+    {
+        UpdateTarget();
+        
+    }
+    
   }
 
   private float ClampAngle(float angle, float min, float max)
@@ -78,4 +91,21 @@ public class Movement3D : MonoBehaviour
       moveDirection.y = jumpForce;
     }
   }
+    void UpdateTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
+        float shortestDistance = Mathf.Infinity;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distanceToEnemy < shortestDistance)
+            {
+                currentEnemy = enemy.GetComponent<Enemy>();
+                currentEnemy.TakeDamage(10.0f);
+            }
+        }        
+    }
 }

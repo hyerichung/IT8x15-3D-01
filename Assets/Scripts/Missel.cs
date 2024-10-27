@@ -14,6 +14,8 @@ public class Missel : MonoBehaviour
   public void Seek(Enemy _enemy)
   {
     enemy = _enemy;
+
+    Debug.Log(enemy.name);
   }
 
   void Update()
@@ -41,7 +43,7 @@ public class Missel : MonoBehaviour
   {
     GameObject effectInstance = Instantiate(impactEffect, transform.position, transform.rotation);
 
-    enemy.TakeDamage(30);
+    enemy.TakeDamage(1000);
 
     Destroy(effectInstance, 2f);
 
