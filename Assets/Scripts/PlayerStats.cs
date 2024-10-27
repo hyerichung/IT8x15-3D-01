@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerStats : MonoBehaviour
 
   public static int Rounds;
 
+  public Text livesCountdownText;
+
   void Start()
   {
     Money = startMoney;
@@ -17,4 +20,9 @@ public class PlayerStats : MonoBehaviour
 
     Rounds = 0;
   }
+
+    private void Update()
+    {
+        livesCountdownText.text = "Life " + Lives.ToString() + "/20";
+    }
 }

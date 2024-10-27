@@ -2717,10 +2717,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 6
   speed: 0
+  EnemyCount: 0
   startHealth: 100
   worth: 50
   isSlowing: 0
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 179592}
   healthBar: {fileID: 0}
 --- !u!114 &-5546733040687393270
 MonoBehaviour:
@@ -2735,6 +2736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.7
+  livesCountdownText: {fileID: 0}
 --- !u!1 &179900
 GameObject:
   m_ObjectHideFlags: 0

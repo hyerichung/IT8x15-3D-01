@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -65,5 +66,10 @@ public class Enemy : MonoBehaviour
     WaveSpawner.EnemiesAlive--;
 
     Destroy(gameObject);
+
+    if (WaveSpawner.EnemiesAlive == 0 && PlayerStats.Rounds == 7)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
   }
 }

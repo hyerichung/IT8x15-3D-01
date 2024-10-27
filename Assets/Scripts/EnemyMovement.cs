@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
@@ -14,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
   private Animator anim;
 
-  void Start()
+    void Start()
   {
     enemy = GetComponent<Enemy>();
     target = Waypoints.points[0];
@@ -35,7 +36,6 @@ public class EnemyMovement : MonoBehaviour
 
     if (distance <= 5.5f)
     {
-      Debug.Log("Attack");
       transform.Translate(0.001f, 0.001f, 0.001f);
       MonsterAttack();
     }
@@ -43,11 +43,6 @@ public class EnemyMovement : MonoBehaviour
     {
       MonsterNormalMovement(dir);
     }
-
-    //if (Vector3.Distance(transform.position, target.position) <= 0.4f)
-    //{
-    //    GetNextWaypoint();
-    //}
   }
 
   void MonsterNormalMovement(Vector3 dir)
@@ -59,7 +54,6 @@ public class EnemyMovement : MonoBehaviour
     {
       GetNextWaypoint();
     }
-
   }
 
   void MonsterAttack()
@@ -112,10 +106,20 @@ public class EnemyMovement : MonoBehaviour
     target = Waypoints.points[wavepointIndex];
   }
 
-  void EndPath()
-  {
-    PlayerStats.Lives--;
-    WaveSpawner.EnemiesAlive--;
-    Destroy(gameObject);
-  }
+    void EndPath()
+    {
+        PlayerStats.Lives--;
+        WaveSpawner.EnemiesAlive--;
+
+        Destroy(gameObject);
+
+        if (PlayerStats.Lives == 0)
+        {
+            SceneManager.LoadScene("GameResult");
+        }
+        if (WaveSpawner.EnemiesAlive == 0 && PlayerStats.Rounds == 7)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
 }
