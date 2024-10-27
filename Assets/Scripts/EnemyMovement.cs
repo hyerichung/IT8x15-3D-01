@@ -31,13 +31,11 @@ public class EnemyMovement : MonoBehaviour
     anim = WaveSpawner.anim;
 
     Vector3 dir = target.position - transform.position;
-    //transform.Translate(dir.normalized * enemy.speed * Time.deltaTime, Space.World);
-    //transform.LookAt(target);
-
     distance = Vector3.Distance(transform.position, hero.transform.position);
 
     if (distance <= 5.5f)
     {
+      Debug.Log("Attack");
       transform.Translate(0.001f, 0.001f, 0.001f);
       MonsterAttack();
     }
@@ -51,20 +49,6 @@ public class EnemyMovement : MonoBehaviour
     //    GetNextWaypoint();
     //}
   }
-
-  private void OnTriggerStay(Collider other)
-  {
-    if (other.gameObject.name == "Hero")
-    {
-      //Debug.Log("trigger");
-      enemy.startHealth -= 10.0f;
-      if (enemy.startHealth == 0)
-      {
-        EndPath();
-      }
-    }
-  }
-
 
   void MonsterNormalMovement(Vector3 dir)
   {
