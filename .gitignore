@@ -75,3 +75,6 @@ crashlytics-build.properties
 # Temporary files created by Unity
 # Should not be checked into version control
 *.tmp
+
+.DS_Store
+*vs/
