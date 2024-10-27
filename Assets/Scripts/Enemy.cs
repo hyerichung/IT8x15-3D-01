@@ -43,7 +43,6 @@ public class Enemy : MonoBehaviour
   public void ApplySlow(float factor)
   {
     speed = startSpeed * factor;
-    Debug.Log($"{factor}, {startSpeed * factor}, {speed}");
   }
 
   public void RestoreSpeed()

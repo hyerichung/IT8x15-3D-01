@@ -211,8 +211,8 @@ Transform:
   m_GameObject: {fileID: 100004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.9, y: 0.5, z: -21.79}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 400000}
@@ -232,12 +232,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targets: []
+  currentEnemy: {fileID: 0}
+  currentEnemies: []
   range: 15
   fireRate: 1
   misselPrefeb: {fileID: 0}
   useLaser: 0
-  laserPrefeb: {fileID: 0}
+  lineRenderer: {fileID: 0}
   useAura: 1
   auraRate: 0.5
   auraPrefeb: {fileID: 194346, guid: 18ca0b65eadca7c46b9b94e7d23cab44, type: 3}

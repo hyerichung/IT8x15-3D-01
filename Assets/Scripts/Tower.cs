@@ -32,7 +32,6 @@ public class Tower : MonoBehaviour
   public Transform partToRotate;
   public string enemyTag = "Enemy";
   public float rotationSpeed = 10f;
-
   public Transform firePoint;
 
   void Start()
