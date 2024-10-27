@@ -1230,6 +1230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMoney: 600
   startLives: 20
+  livesCountdownText: {fileID: 680681209}
 --- !u!114 &119145250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7922,7 +7923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &633567348
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7943,7 +7944,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c606a2a8d5991e542a357f17009cdf42, type: 2}
+  - {fileID: 2100000, guid: 16a185093c7e02d40a49265c23c74417, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13992,6 +13993,11 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 1.8
   groundOffset: 100
+  enemyTag: Enemy
+  currentEnemy: {fileID: 0}
+  currentEnemies: []
+  target: {fileID: 0}
+  range: 5
 --- !u!95 &983322122
 Animator:
   serializedVersion: 5
