@@ -73,7 +73,6 @@ public class Node : MonoBehaviour
 
   void OnMouseEnter()
   {
-    Debug.Log($"{buildManager.HasTowerBlueprint}, {EventSystem.current.IsPointerOverGameObject()}, {tower}");
     if (!buildManager.HasTowerBlueprint) return;
 
     if (EventSystem.current.IsPointerOverGameObject()) return;
