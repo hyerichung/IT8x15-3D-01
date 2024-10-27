@@ -6,6 +6,26 @@
 
 This project covers the design of a strategic tower defense game where one needs to protect the kingdom from waves of cursed monsters. In this game, there is a need to build towers, manage resources, and control the main character-the hero-with the only aim of stopping the monsters from reaching the core of the kingdom. We used Unity for the development platform, and as such, C# became our programming language. In this way, we were able to create a game working on both web and mobile devices. 
 
+by @hyerichung @fossil97 @NisansalaSewwandi
+
+## System Prerequisites
+Version 2022.3.8f1
+
+As the game is using Unity's HDRP, only the following systems work with the requirement. [HDRP](https://unity.com/how-to/getting-started-with-hdrp)
+- Windows and Windows Store, with DirectX 11 or DirectX 12 and Shader Model 5.0
+- Modern consoles (minimum Sony PlayStation 4 or Microsoft Xbox One)
+- MacOS (minimum version 10.13) using Metal graphics
+- Linux and Windows platforms with Vulkan
+
+## Playing the Game
+- Moving: Arrow key up/down/left/right
+- Attack: Z key
+- Jump: Space key
+- Click tower button: Enter tower placing mode
+- Escape from tower placing mode: Esc key
+- Click installed tower: Click upgrade button appeared for upgrading tower
+- [Link for playing](https://hyerichungdev.itch.io/towerdefense3d)
+
 <h3>Level Structure</h3>
 The game includes two primary levels, each escalating in difficulty and enemy complexity. The design favors a linear path from left to right, where enemies spawn on the left side and progress toward the kingdom on the right. This structure simplifies the gameplay while emphasizing tower defense strategy, allowing players to anticipate enemy paths and plan tower placements effectively.
 <h5>Level 1</h5>
@@ -13,8 +33,7 @@ The game includes two primary levels, each escalating in difficulty and enemy co
 ![image](https://github.com/user-attachments/assets/b2f5a5b9-5036-4700-985f-6cea763d7d25)
 
 <h5>Level 2 </h5>
-
-![image](https://github.com/user-attachments/assets/dae87e8e-a8b5-496b-82d7-a5027972bf33)
+<img width="870" alt="Screenshot 2024-10-28 at 1 26 25 AM" src="https://github.com/user-attachments/assets/e22fcd62-4432-43df-9656-daf029fc8196">
 
 <h3>Game Characters</h3>
 <h4>Hero</h4>
