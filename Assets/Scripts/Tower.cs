@@ -5,7 +5,8 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
   public Transform target;
-  public List<Transform> targets;
+  public Enemy currentEnemy;
+  public List<Enemy> currentEnemies;
 
   [Header("General")]
   public float range = 15f;
@@ -66,9 +67,9 @@ public class Tower : MonoBehaviour
     else if (useAura)
     {
       // numberOfTargets 넘으면 타겟들 초기화
-      if (targets.Count > numberOfTargets)
+      if (currentEnemies.Count > numberOfTargets)
       {
-        targets.Clear();
+        currentEnemies.Clear();
       }
 
       if (auraCountdown <= 0f)
@@ -120,18 +121,20 @@ public class Tower : MonoBehaviour
       {
         shortestDistance = distanceToEnemy;
         nearestEnemy = enemy;
+        currentEnemy = enemy.GetComponent<Enemy>();
       }
     }
 
     if (nearestEnemy != null && shortestDistance <= range)
     {
       target = nearestEnemy.transform;
-
-      targets.Add(target);
+      currentEnemies.Add(currentEnemy);
     }
     else
     {
       target = null;
+      currentEnemy = null;
+      currentEnemies.Clear();
     }
   }
 
@@ -144,6 +147,8 @@ public class Tower : MonoBehaviour
 
     lineRenderer.SetPosition(0, firePoint.position);
     lineRenderer.SetPosition(1, target.position + new Vector3(0, target.position.y, 0));
+
+    currentEnemy.TakeDamage(0.25f);
   }
 
   void ShootMissel()
@@ -154,7 +159,7 @@ public class Tower : MonoBehaviour
 
     if (missel != null)
     {
-      missel.Seek(target);
+      missel.Seek(currentEnemy);
     }
   }
 
@@ -164,9 +169,9 @@ public class Tower : MonoBehaviour
 
     Aura aura = auraGO.GetComponent<Aura>();
 
-    if (aura != null && targets.Count <= numberOfTargets)
+    if (aura != null && currentEnemies.Count <= numberOfTargets)
     {
-      aura.setTargets(targets);
+      aura.setTargets(currentEnemies);
     }
   }
 

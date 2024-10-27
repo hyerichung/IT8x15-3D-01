@@ -45,7 +45,7 @@ public class WaveSpawner : MonoBehaviour
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
 
         t_waveIndex = waveIndex + 1;
-        waveCountdownText.text = "Wave " + t_waveIndex.ToString() + "/7";        
+        waveCountdownText.text = "Wave " + t_waveIndex.ToString() + "/7";
     }
 
     IEnumerator SpawnWave()
@@ -70,8 +70,8 @@ public class WaveSpawner : MonoBehaviour
         //}       
     }
 
-	void SpawnEnemy(GameObject enemy)
-	{
+    void SpawnEnemy(GameObject enemy)
+    {
         anim = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation).GetComponent<Animator>();
     }
 }

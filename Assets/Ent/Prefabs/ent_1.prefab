@@ -1816,8 +1816,7 @@ GameObject:
   - component: {fileID: 417384}
   - component: {fileID: 9503208}
   - component: {fileID: 14349170}
-  - component: {fileID: -3756951547774670892}
-  - component: {fileID: 976958174617712668}
+  - component: {fileID: 1940082775372055146}
   m_Layer: 0
   m_Name: ent_1
   m_TagString: Enemy
@@ -1835,7 +1834,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.2361963, y: -0.009, z: 0.20623921}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 413234}
@@ -1890,7 +1889,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.41, z: 0}
---- !u!114 &-3756951547774670892
+--- !u!114 &1940082775372055146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1902,22 +1901,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5478181ad88eaab43947160d70cc236a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 5
+  startSpeed: 10
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 198892}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &976958174617712668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde5a83acad6f504e88eaa0d3172d554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2

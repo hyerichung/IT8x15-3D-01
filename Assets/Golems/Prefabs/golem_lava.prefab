@@ -568,11 +568,11 @@ GameObject:
   - component: {fileID: 481082}
   - component: {fileID: 9543198}
   - component: {fileID: 14364068}
-  - component: {fileID: -8343964393049662477}
-  - component: {fileID: -8081007798721676336}
+  - component: {fileID: 11496542}
+  - component: {fileID: -3316329298668522827}
   m_Layer: 0
   m_Name: golem_lava
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,7 +587,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.4042487, y: -0.009, z: -3.2175632}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 492444}
@@ -642,7 +642,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.16, z: 0}
---- !u!114 &-8343964393049662477
+--- !u!114 &11496542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bab8478a03c43646a4d46a44b62d17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.62
+--- !u!114 &-3316329298668522827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -654,25 +667,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5478181ad88eaab43947160d70cc236a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 6
+  startSpeed: 10
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 136700}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &-8081007798721676336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde5a83acad6f504e88eaa0d3172d554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1.7
 --- !u!1 &138270
 GameObject:
   m_ObjectHideFlags: 0

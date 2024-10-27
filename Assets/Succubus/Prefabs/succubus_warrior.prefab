@@ -170,11 +170,11 @@ GameObject:
   - component: {fileID: 447040}
   - component: {fileID: 9503248}
   - component: {fileID: 14325384}
-  - component: {fileID: 6936749658712534602}
-  - component: {fileID: -4690859045122686507}
+  - component: {fileID: 5202007866062189493}
+  - component: {fileID: 8754402410587395972}
   m_Layer: 0
   m_Name: succubus_warrior
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +189,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.1097162, y: -1.200643e-16, z: 5.4072146}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 441910}
@@ -245,7 +245,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &6936749658712534602
+--- !u!114 &5202007866062189493
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,9 +261,9 @@ MonoBehaviour:
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 105198}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &-4690859045122686507
+--- !u!114 &8754402410587395972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

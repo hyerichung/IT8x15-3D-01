@@ -2630,7 +2630,7 @@ GameObject:
   - component: {fileID: -5546733040687393270}
   m_Layer: 0
   m_Name: Goblins_all
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2719,7 +2719,7 @@ MonoBehaviour:
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 179592}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
 --- !u!114 &-5546733040687393270
 MonoBehaviour:

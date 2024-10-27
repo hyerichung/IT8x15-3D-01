@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: -1297378482098773249}
   m_Layer: 0
   m_Name: Monster_rabbit
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -735,7 +735,7 @@ MonoBehaviour:
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 129042}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
 --- !u!114 &-1297378482098773249
 MonoBehaviour:

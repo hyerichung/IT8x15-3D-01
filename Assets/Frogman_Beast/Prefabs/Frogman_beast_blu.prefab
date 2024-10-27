@@ -426,8 +426,7 @@ GameObject:
   - component: {fileID: 478410}
   - component: {fileID: 9520652}
   - component: {fileID: 14356690}
-  - component: {fileID: 8754000986458949617}
-  - component: {fileID: 5029851212578230313}
+  - component: {fileID: 5373986040031279068}
   m_Layer: 0
   m_Name: Frogman_beast_blu
   m_TagString: Enemy
@@ -445,7 +444,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.4612102, y: -0.009, z: 0.3969812}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 496846}
@@ -499,7 +498,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.61, z: 0}
---- !u!114 &8754000986458949617
+--- !u!114 &5373986040031279068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -511,25 +510,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5478181ad88eaab43947160d70cc236a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 5
+  startSpeed: 10
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 120022}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &5029851212578230313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde5a83acad6f504e88eaa0d3172d554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
 --- !u!1 &122570
 GameObject:
   m_ObjectHideFlags: 0

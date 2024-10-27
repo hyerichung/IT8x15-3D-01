@@ -894,8 +894,8 @@ GameObject:
   - component: {fileID: 447318}
   - component: {fileID: 9505340}
   - component: {fileID: 14313336}
-  - component: {fileID: 5600776471143448635}
-  - component: {fileID: 8797293027537962822}
+  - component: {fileID: 11462184}
+  - component: {fileID: 2792244919923371621}
   m_Layer: 0
   m_Name: succubus_all
   m_TagString: Enemy
@@ -913,7 +913,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.1097162, y: -1.200643e-16, z: 5.4072146}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 413164}
@@ -972,7 +972,24 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &5600776471143448635
+--- !u!114 &11462184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be462584d75c284a85b472416821710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  runSpeed: 1.7
+  turnSpeed: 120
+  gravity: 20
+  suc_class: 1
+--- !u!114 &2792244919923371621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -984,25 +1001,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5478181ad88eaab43947160d70cc236a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 5
+  startSpeed: 10
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 126080}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &8797293027537962822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 126080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde5a83acad6f504e88eaa0d3172d554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!1 &126792
 GameObject:
   m_ObjectHideFlags: 0

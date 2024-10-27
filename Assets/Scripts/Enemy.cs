@@ -3,57 +3,66 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public float startSpeed = 10f;
+  public float startSpeed = 10f;
 
-    [HideInInspector]
-    public float speed;
+  [HideInInspector]
+  public float speed;
 
-    public float startHealth = 100;
-    private float health;
+  public float startHealth = 100;
+  private float health;
 
-    public int worth = 50;
+  public int worth = 50;
 
-    public GameObject deathEffect;
+  public bool isSlowing = false;  // Slow 상태를 추적하는 변수
 
-    [Header("Unity Stuff")]
-    public Image healthBar;
+  public GameObject deathEffect;
 
-    private bool isDead = false;
+  [Header("Unity Stuff")]
+  public Image healthBar;
 
-    void Start()
+  private bool isDead = false;
+
+  void Start()
+  {
+    speed = startSpeed;
+    health = startHealth;
+  }
+
+  public void TakeDamage(float amount)
+  {
+    health -= amount;
+
+    //healthBar.fillAmount = health / startHealth;
+
+    if (health <= 0 && !isDead)
     {
-        speed = startSpeed;
-        health = startHealth;
+      Die();
     }
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
+  }
 
-        //healthBar.fillAmount = health / startHealth;
+  public void ApplySlow(float factor)
+  {
+    speed = startSpeed * factor;
+    Debug.Log($"{factor}, {startSpeed * factor}, {speed}");
+  }
 
-        if (health <= 0 && !isDead)
-        {
-            Die();
-        }
-    }
+  public void RestoreSpeed()
+  {
+    speed = startSpeed;
+  }
 
-    public void Slow(float pct)
-    {
-        speed = startSpeed * (1f - pct);
-    }
+  void Die()
+  {
+    isDead = true;
 
-    void Die()
-    {
-        isDead = true;
+    PlayerStats.Money += worth;
 
-        PlayerStats.Money += worth;
+    // TODO:
+    // GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
+    // Destroy(effect, 5f);
 
-        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 5f);
+    WaveSpawner.EnemiesAlive--;
 
-        WaveSpawner.EnemiesAlive--;
-
-	    Destroy(gameObject);
-    }
-
+    Destroy(gameObject);
+  }
 }

@@ -1359,8 +1359,7 @@ GameObject:
   - component: {fileID: 460754}
   - component: {fileID: 9507362}
   - component: {fileID: 14314726}
-  - component: {fileID: -5960761107999692610}
-  - component: {fileID: 1619418787203859822}
+  - component: {fileID: 6856408349241268629}
   m_Layer: 0
   m_Name: iguana_all
   m_TagString: Enemy
@@ -1378,7 +1377,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.2615287, y: -0.009, z: 0.020425318}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 451914}
@@ -1436,7 +1435,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.66, z: 0}
---- !u!114 &-5960761107999692610
+--- !u!114 &6856408349241268629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1452,21 +1451,8 @@ MonoBehaviour:
   speed: 0
   startHealth: 100
   worth: 50
-  deathEffect: {fileID: 135048}
+  deathEffect: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &1619418787203859822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde5a83acad6f504e88eaa0d3172d554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!1 &135060
 GameObject:
   m_ObjectHideFlags: 0
