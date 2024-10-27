@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
   [Header("Unity Stuff")]
   public Image healthBar;
 
-  private bool isDead = false;    
+  private bool isDead = false;
 
   void Start()
   {
@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour
   public void ApplySlow(float factor)
   {
     speed = startSpeed * factor;
-    Debug.Log($"{factor}, {startSpeed * factor}, {speed}");
   }
 
   public void RestoreSpeed()

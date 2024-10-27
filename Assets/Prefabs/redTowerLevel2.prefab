@@ -841,8 +841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targets: []
-  range: 15
+  currentEnemy: {fileID: 0}
+  currentEnemies: []
+  range: 35
   fireRate: 1
   misselPrefeb: {fileID: 0}
   useLaser: 1

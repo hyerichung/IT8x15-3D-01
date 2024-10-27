@@ -23,7 +23,6 @@ public class PlayerStats : MonoBehaviour
 
   private void Update()
   {
-    Debug.Log("PlayerStats");
     livesCountdownText.text = $"<b>{Lives.ToString()} / 20</b>";
   }
 }

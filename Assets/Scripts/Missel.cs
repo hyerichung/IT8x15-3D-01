@@ -14,8 +14,6 @@ public class Missel : MonoBehaviour
   public void Seek(Enemy _enemy)
   {
     enemy = _enemy;
-
-    Debug.Log(enemy.name);
   }
 
   void Update()

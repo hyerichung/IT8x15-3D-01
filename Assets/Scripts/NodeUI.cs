@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class NodeUI : MonoBehaviour
 {
   public GameObject ui;
-  public Text upgradeCost;
   public Button upgradeButton;
   public Vector3 towerOffset;
 
@@ -19,12 +18,10 @@ public class NodeUI : MonoBehaviour
 
     if (!target.isUpgraded)
     {
-      upgradeCost.text = "$" + target.towerBlueprint.upgradeCost.ToString("F0");
       upgradeButton.interactable = true;
     }
     else
     {
-      upgradeCost.text = "DONE";
       upgradeButton.interactable = false;
     }
 

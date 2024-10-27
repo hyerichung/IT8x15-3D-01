@@ -232,12 +232,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targets: []
-  range: 15
+  currentEnemy: {fileID: 0}
+  currentEnemies: []
+  range: 35
   fireRate: 1
   misselPrefeb: {fileID: 0}
   useLaser: 0
-  laserPrefeb: {fileID: 0}
+  lineRenderer: {fileID: 0}
   useAura: 1
   auraRate: 0.5
   auraPrefeb: {fileID: 166930, guid: 7d500fe649440354b970852340b3a46f, type: 3}
